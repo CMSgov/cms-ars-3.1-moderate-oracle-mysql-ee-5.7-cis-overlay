@@ -77,7 +77,7 @@ The JSON InSpec results file may also be loaded into a __[full heimdall server](
 * Alicia Sturtevant
 
 ## Getting Help
-To report a bug or feature request, please open an [issue](https://github.com/mitre/oracle-mysql-ee-5.7-cis-baseline/issues/new).
+To report a bug or feature request, please open an [issue](https://github.cms.gov/ISPG/cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay/issues/new).
 
 ## License
 This is licensed under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license. 
