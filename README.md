@@ -12,28 +12,28 @@ Latest versions and installation options are available at the [InSpec](http://in
 The following attributes must be configured in an attributes file for the profile to run correctly. More information about InSpec attributes can be found in the [InSpec Profile Documentation](https://www.inspec.io/docs/reference/profiles/).
  
 ```
-# description: Username MSSQL DB Server (e.g., 'root')
+# description: Username MySQL DB Server (e.g., 'root')
 user: ''
 
-# description: Password MSSQL DB Server (e.g., 'P@ssw0rd1')
+# description: Password MySQL DB Server (e.g., 'P@ssw0rd1')
 password: ''
 
-# description: Hostname MSSQL DB Server (e.g., 'localhost')
+# description: Hostname MySQL DB Server (e.g., 'localhost')
 host: ''
 
-# description: Port MSSQL DB Server
+# description: Port MySQL DB Server
 port: 3306
 
-# description: List of mysql database users (e.g., ['root'])
+# description: List of MySQL database users (e.g., ['root'])
 mysql_users: []   
 
-# description: Set to true if the mysql server has a slave configured
+# description: Set to true if the MySQL server has a slave configured
 is_mysql_server_slave_configured: false
 
-# description: List of mysql administrative users (e.g., ['root'])
+# description: List of MySQL administrative users (e.g., ['root'])
 mysql_administrative_users: [] 
 
-# description: List of mysql users allows to modify or create data structures (e.g., ['root'])
+# description: List of MySQL users allows to modify or create data structures (e.g., ['root'])
 mysql_users_allowed_modify_or_create: [] 
 ```
 
