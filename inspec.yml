@@ -13,18 +13,18 @@ depends:
 
 attributes:
   - name: user
-    description: 'username MSSQL DB Server'
+    description: 'username MSSQL DB Server (e.g., ''root'')'
     type: string
-    default: 'root'
+    default: ''
 
   - name: password
-    description: 'password MSSQL DB Server'
+    description: 'password MSSQL DB Server (e.g., ''P@ssw0rd1'')'
     type: string
-    default: 'P@ssw0rd1'
+    default: ''
 
   - name: host
-    description: 'hostname MSSQL DB Server'
-    default: 'localhost'
+    description: 'hostname MSSQL DB Server (e.g., ''localhost'')'
+    default: ''
 
   - name: port
     description: 'port MSSQL DB Server'
@@ -32,21 +32,21 @@ attributes:
     default: 3306
 
   - name: mysql_users
-    description: 'List of mysql database users'
+    description: 'List of mysql database users (e.g., [''root''])'
     type: array
-    default: ['root']   
+    default: []   
 
   - name: is_mysql_server_slave_configured
     description: 'Set to true if the mysql server has a slave configured'
     type: boolean
-    default: true
+    default: false
 
   - name: mysql_administrative_users
-    description: 'List of mysql administrative users'
+    description: 'List of mysql administrative users (e.g., [''root''])'
     type: array
-    default: ['root'] 
+    default: []
 
   - name: mysql_users_allowed_modify_or_create
-    description: 'List of mysql users allows to modify or create data structures'
+    description: 'List of mysql users allows to modify or create data structures (e.g., [''root''])'
     type: array
-    default: ['root'] 
+    default: [] 
