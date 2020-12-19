@@ -88,6 +88,7 @@ The JSON InSpec results file may also be loaded into a __[full heimdall server](
 
 ## Special Thanks
 * Alicia Sturtevant - [asturtevant](https://github.com/asturtevant)
+* Shivani Karikar - [karikarshivani](https://github.com/karikarshivani)
 
 ## Contributing and Getting Help
 To report a bug or feature request, please open an [issue](https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay/issues/new).
