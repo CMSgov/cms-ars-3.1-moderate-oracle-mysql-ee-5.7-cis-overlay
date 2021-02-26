@@ -1,5 +1,4 @@
 # cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay
-
 InSpec profile overlay to validate the secure configuration of Oracle MySQL EE 5.7 against [CIS's](https://www.cisecurity.org/cis-benchmarks/) Oracle MySQL EE 5.7 Benchmark 1.0.0 tailored for [CMS ARS 3.1](https://www.cms.gov/Research-Statistics-Data-and-Systems/CMS-Information-Technology/InformationSecurity/Info-Security-Library-Items/ARS-31-Publication.html) for CMS systems categorized as Moderate.
 
 ## Getting Started  
@@ -9,80 +8,98 @@ __For the best security of the runner, always install on the runner the _latest 
 
 Latest versions and installation options are available at the [InSpec](http://inspec.io/) site.
 
-Git is required to download the latest InSpec profiles using the instructions below. Git can be downloaded from the [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) site. 
-
-The following attributes must be configured in an attributes file for the profile to run correctly. More information about InSpec attributes can be found in the [InSpec Profile Documentation](https://www.inspec.io/docs/reference/profiles/).
+## Tailoring to Your Environment
+The following inputs must be configured in an inputs ".yml" file for the profile to run correctly for your specific environment. More information about InSpec inputs can be found in the [InSpec Profile Documentation](https://www.inspec.io/docs/reference/profiles/).
  
 ```
-# description: Username MySQL DB Server (e.g., 'root')
+# Description: Username MySQL DB Server (e.g., 'root')
 user: ''
 
-# description: Password MySQL DB Server (e.g., 'P@ssw0rd1')
+# Description: Password MySQL DB Server (e.g., 'P@ssw0rd1')
 password: ''
 
-# description: Hostname MySQL DB Server (e.g., 'localhost')
+# Description: Hostname MySQL DB Server (e.g., 'localhost')
 host: ''
 
-# description: Port MySQL DB Server
+# Description: Port MySQL DB Server
 port: 3306
 
-# description: List of MySQL database users (e.g., ['root'])
+# Description: List of MySQL database users (e.g., ['root'])
 mysql_users: []   
 
-# description: Set to true if the MySQL server has a slave configured
+# Description: Set to true if the MySQL server has a slave configured
 is_mysql_server_slave_configured: false
 
-# description: List of MySQL administrative users (e.g., ['root'])
+# Description: List of MySQL administrative users (e.g., ['root'])
 mysql_administrative_users: [] 
 
-# description: List of MySQL users allows to modify or create data structures (e.g., ['root'])
+# Description: List of MySQL users allows to modify or create data structures (e.g., ['root'])
 mysql_users_allowed_modify_or_create: [] 
 ```
 
-## Running This Overlay
+## Running This Overlay Directly from Github
+
+```
+# How to run
+inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay/archive/master.tar.gz --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
+```
+
+### Different Run Options
+
+  [Full exec options](https://docs.chef.io/inspec/cli/#options-3)
+
+## Running This Overlay from a local Archive copy 
+
+If your runner is not always expected to have direct access to GitHub, use the following steps to create an archive bundle of this overlay and all of its dependent tests:
+
+(Git is required to clone the InSpec profile using the instructions below. Git can be downloaded from the [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) site.)
+
 When the __"runner"__ host uses this profile overlay for the first time, follow these steps: 
 
 ```
 mkdir profiles
 cd profiles
 git clone https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay.git
-git clone https://github.com/mitre/oracle-mysql-ee-5.7-cis-baseline.git
-cd cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay
-bundle install
-cd ..
-inspec exec cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay --attrs=<path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+inspec arhive cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay
+inspec exec <name of generated archive> --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
 ```
 
 For every successive run, follow these steps to always have the latest version of this overlay and dependent profiles:
 
 ```
-cd profiles/oracle-mysql-ee-5.7-cis-baseline
+cd cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay
 git pull
-cd ../cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay
-git pull
-bundle install
 cd ..
-inspec exec cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay --attrs=<path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+inspec arhive cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay --overwrite
+inspec exec <name of generated archive> --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
 ```
 
-## Viewing the JSON Results
+## Using Heimdall for Viewing the JSON Results
 
-The JSON results output file can be loaded into __[heimdall-lite](https://mitre.github.io/heimdall-lite/)__ for a user-interactive, graphical view of the InSpec results. 
+The JSON results output file can be loaded into __[heimdall-lite](https://heimdall-lite.mitre.org/)__ for a user-interactive, graphical view of the InSpec results. 
 
 The JSON InSpec results file may also be loaded into a __[full heimdall server](https://github.com/mitre/heimdall)__, allowing for additional functionality such as to store and compare multiple profile runs.
 
 ## Authors
-* Eugene Aronne
-* Danny Haynes
+* Eugene Aronne - [ejaronne](https://github.com/ejaronne)
+* Danny Haynes - [djhaynes](https://github.com/djhaynes)
 
 ## Special Thanks
-* Alicia Sturtevant
+* Alicia Sturtevant - [asturtevant](https://github.com/asturtevant)
+* Shivani Karikar - [karikarshivani](https://github.com/karikarshivani)
 
-## Getting Help
+## Contributing and Getting Help
 To report a bug or feature request, please open an [issue](https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay/issues/new).
 
-## License
-This is licensed under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license. 
+### NOTICE
+
+© 2018-2020 The MITRE Corporation.
+
+Approved for Public Release; Distribution Unlimited. Case Number 18-3678.
+
+### NOTICE 
+
+MITRE hereby grants express written permission to use, reproduce, distribute, modify, and otherwise leverage this software to the extent permitted by the licensed terms provided in the LICENSE.md file included with this project.
 
 ### NOTICE  
 
@@ -92,7 +109,6 @@ No other use other than that granted to the U. S. Government, or to those acting
 
 For further information, please contact The MITRE Corporation, Contracts Management Office, 7515 Colshire Drive, McLean, VA  22102-7539, (703) 983-6000.
 
-### NOTICE
+### NOTICE 
 
-* This project is dual-licensed under the terms of the Apache license 2.0 (apache-2.0)
-* This project is dual-licensed under the terms of the Creative Commons Attribution Share Alike 4.0 (cc-by-sa-4.0)
+CIS Benchmarks are published by the Center for Internet Security (CIS), see: https://www.cisecurity.org/.

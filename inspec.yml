@@ -1,52 +1,65 @@
 name: cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay
-title: .
+title: cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay
 maintainer: CMS InSpec Dev Team
-copyright: .
+copyright:
 copyright_email: 
-summary: .
+summary: "CMS ARS 3.1 Moderate Overlay InSpec Validation Profile for Oracle MySQL EE 5.7 CIS"
 license: Apache-2.0
-version: 0.1.0
+version: 0.1.1
+inspec_version: ">= 4.0"
 
 depends:
 - name: oracle-mysql-ee-5.7-cis-baseline
-  path: ../oracle-mysql-ee-5.7-cis-baseline
+  url: https://github.com/mitre/oracle-mysql-ee-5.7-cis-baseline/archive/master.tar.gz
 
-attributes:
+inputs:
   - name: user
     description: 'username MSSQL DB Server (e.g., ''root'')'
     type: string
-    default: ''
+    value: ''
+    sensitive: true
+    profile: oracle-mysql-ee-5.7-cis-baseline
 
   - name: password
     description: 'password MSSQL DB Server (e.g., ''P@ssw0rd1'')'
     type: string
-    default: ''
+    value: ''
+    sensitive: true
+    profile: oracle-mysql-ee-5.7-cis-baseline
 
   - name: host
     description: 'hostname MSSQL DB Server (e.g., ''localhost'')'
-    default: ''
+    value: ''
+    sensitive: true
+    profile: oracle-mysql-ee-5.7-cis-baseline
 
   - name: port
     description: 'port MSSQL DB Server'
     type: numeric
-    default: 3306
+    value: 3306
+    sensitive: true
+    profile: oracle-mysql-ee-5.7-cis-baseline
 
   - name: mysql_users
     description: 'List of mysql database users (e.g., [''root''])'
     type: array
-    default: []   
+    value: []
+    profile: oracle-mysql-ee-5.7-cis-baseline
 
   - name: is_mysql_server_slave_configured
     description: 'Set to true if the mysql server has a slave configured'
     type: boolean
-    default: false
+    value: false
+    profile: oracle-mysql-ee-5.7-cis-baseline
 
   - name: mysql_administrative_users
     description: 'List of mysql administrative users (e.g., [''root''])'
     type: array
-    default: []
+    value: []
+    profile: oracle-mysql-ee-5.7-cis-baseline
 
   - name: mysql_users_allowed_modify_or_create
     description: 'List of mysql users allows to modify or create data structures (e.g., [''root''])'
     type: array
-    default: [] 
+    value: []
+    profile: oracle-mysql-ee-5.7-cis-baseline
