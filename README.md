@@ -1,8 +1,9 @@
 # cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay
 InSpec profile overlay to validate the secure configuration of Oracle MySQL EE 5.7 against [CIS's](https://www.cisecurity.org/cis-benchmarks/) Oracle MySQL EE 5.7 Benchmark 1.0.0 tailored for [CMS ARS 3.1](https://www.cms.gov/Research-Statistics-Data-and-Systems/CMS-Information-Technology/InformationSecurity/Info-Security-Library-Items/ARS-31-Publication.html) for CMS systems categorized as Moderate.
 
+#### Container-Ready: Profile updated to adapt checks when the running against a containerized instance of MySQL, based on reference container: (docker pull registry1.dso.mil/ironbank/opensource/mysql/mysql-5.7:5.7.35)
+
 ## Getting Started  
-It is intended and recommended that InSpec and this profile overlay be run from a __"runner"__ host (such as a DevOps orchestration server, an administrative management system, or a developer's workstation/laptop) against the target.
 
 __For the best security of the runner, always install on the runner the _latest version_ of InSpec and supporting Ruby language components.__ 
 
@@ -39,11 +40,14 @@ mysql_users_allowed_modify_or_create: []
 
 ## Running This Overlay Directly from Github
 
+Against a _**locally-hosted**_ instance (i.e., InSpec installed on the target)
 ```
-# How to run
-inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay/archive/master.tar.gz --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
+inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay/archive/master.tar.gz --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> --reporter json:<path_to_your_output_file/name_of_your_output_file.json>
 ```
-
+Against a _**docker-containerized**_ instance (i.e., InSpec installed on the node hosting the container):
+```bash
+inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay/archive/master.tar.gz -t docker://instance_id --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter json:<path_to_your_output_file/name_of_your_output_file.json> 
+```
 ### Different Run Options
 
   [Full exec options](https://docs.chef.io/inspec/cli/#options-3)
@@ -61,7 +65,7 @@ mkdir profiles
 cd profiles
 git clone https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay.git
 inspec arhive cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay
-inspec exec <name of generated archive> --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
+inspec exec <name of generated archive> --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> --reporter json:<path_to_your_output_file/name_of_your_output_file.json>
 ```
 
 For every successive run, follow these steps to always have the latest version of this overlay and dependent profiles:
@@ -71,7 +75,7 @@ cd cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay
 git pull
 cd ..
 inspec arhive cms-ars-3.1-moderate-oracle-mysql-ee-5.7-cis-overlay --overwrite
-inspec exec <name of generated archive> --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
+inspec exec <name of generated archive> --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> --reporter json:<path_to_your_output_file/name_of_your_output_file.json>
 ```
 
 ## Using Heimdall for Viewing the JSON Results
