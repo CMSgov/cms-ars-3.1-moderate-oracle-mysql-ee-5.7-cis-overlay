@@ -13,32 +13,7 @@ depends:
   url: https://github.com/mitre/oracle-mysql-ee-5.7-cis-baseline/archive/master.tar.gz
 
 inputs:
-  - name: user
-    description: 'username MSSQL DB Server (e.g., ''root'')'
-    type: string
-    value: ''
-    sensitive: true
-    profile: oracle-mysql-ee-5.7-cis-baseline
-
-  - name: password
-    description: 'password MSSQL DB Server (e.g., ''P@ssw0rd1'')'
-    type: string
-    value: ''
-    sensitive: true
-    profile: oracle-mysql-ee-5.7-cis-baseline
-
-  - name: host
-    description: 'hostname MSSQL DB Server (e.g., ''localhost'')'
-    value: ''
-    sensitive: true
-    profile: oracle-mysql-ee-5.7-cis-baseline
-
-  - name: port
-    description: 'port MSSQL DB Server'
-    type: numeric
-    value: 3306
-    sensitive: true
-    profile: oracle-mysql-ee-5.7-cis-baseline
+ 
 
   - name: mysql_users
     description: 'List of mysql database users (e.g., [''root''])'
