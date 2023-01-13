@@ -5,7 +5,7 @@ include_controls 'oracle-mysql-ee-5.7-cis-baseline' do
     query = %(select * from information_schema.user_privileges where grantee not like ('\\'mysql.%localhost\\''))
     mysql_user_privileges = sql_session.query(query).stdout.strip
     describe "Ensure all users returned from the following privilege listing are administrative users with minimal privileges required:\n#{mysql_user_privileges}\n" do
-      skip "Ensure all users returned are administrative users with minimal privileges required."
+      skip "Ensure all users returned from the following privilege listing are administrative users with minimal privileges required:\n#{mysql_user_privileges}\n"
     end
   end
     
